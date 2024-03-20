@@ -37,3 +37,4 @@ _ReSharper*/
 *.sln.iml
 *.ipr
 *.iws
+.fake
