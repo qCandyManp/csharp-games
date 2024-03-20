@@ -1,0 +1,39 @@
+# Ignore Visual Studio files
+.vs/
+
+# Ignore mono develop files
+.mono/
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+packages/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.sln.docstates
+
+# Ignore logs and other generated files
+*.log
+*.cache
+*.bak
+*.tmp
+
+# Ignore Resharper files
+_ReSharper*/
+
+# Ignore Visual Studio Code files
+.vscode/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore JetBrains Rider files
+.idea/
+*.sln.iml
+*.ipr
+*.iws
