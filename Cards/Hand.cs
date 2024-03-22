@@ -9,7 +9,7 @@ class Hand : IHand
 
     public void AddCard(Card card)
     {
-        Cards.Append(card);
+        Cards.Add(card);
     }
 
     public Card RemoveCard(int index)
