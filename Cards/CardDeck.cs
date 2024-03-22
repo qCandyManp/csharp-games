@@ -7,7 +7,7 @@ class CardDeck : ICardDeck
 
         int index = 0;
         int colorIndex = 0;
-        foreach (string color in CardColor.colors)
+        foreach (string color in CardColor.names)
         {
             int nameIndex = 0;
             foreach (string name in Card.names)

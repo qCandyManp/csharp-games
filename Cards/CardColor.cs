@@ -1,29 +1,30 @@
 class CardColor
 {
-    public static readonly string[] colors = { "Hearts", "Diamonds", "Clubs", "Spades" };
-    public string Color { get; }
+    public static readonly string[] names = { "Hearts", "Diamonds", "Clubs", "Spades" };
+    public static readonly string[] icons = { "♥", "♦", "♣", "♠" };
+    public int Color { get; set; }
     public CardColor(int index)
     {
-        if (index < 0 || index >= colors.Length)
+        if (index < 0 || index >= names.Length)
         {
             throw new ArgumentOutOfRangeException("index", "Index must be between 0 and 3");
         }
 
-        Color = colors[index];
+        Color = index;
     }
 
-    public string FullName()
+    public string Name()
     {
-        return Color;
+        return names[Color];
     }
 
     public string Icon()
     {
-        return Color;
+        return icons[Color];
     }
 
     public char ShortName()
     {
-        return Color[0];
+        return names[Color][0];
     }
 }

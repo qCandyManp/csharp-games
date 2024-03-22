@@ -3,38 +3,47 @@ class Card : ICard
     public static readonly string[] names = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
 
     public CardColor Color { get; set; }
-    public string Name { get; set; }
+    public int Index { get; set; }
+    public string Name()
+    {
+        return names[Index];
+    }
 
     public Card(int colorIndex, int nameIndex)
     {
         Color = new CardColor(colorIndex);
-        Name = names[nameIndex];
+        Index = nameIndex;
     }
 
     public string FullName()
     {
-        return $"{Name} of {Color}";
+        return $"{Name} of {Color.Name()}";
     }
 
     public string Icon()
     {
-        return $"{Name[0]}{Color}";
+        if (Index > 0 && Index < 10)
+        {
+            return $"{Index}{Color.Icon()}";
+        }
+        else
+        {
+            return $"{Name()[0]}{Color.Icon()}";
+        }
     }
 
     public int Value()
     {
-        int nameIndex = Array.IndexOf(names, Name);
-
-        if (nameIndex == 0)
+        if (Index == 0)
         {
             return 11;
         }
 
-        if (nameIndex >= 9)
+        if (Index >= 9)
         {
             return 10;
         }
 
-        return nameIndex + 1;
+        return Index + 1;
     }
 }
