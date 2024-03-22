@@ -34,8 +34,8 @@ class Blackjack : IGame
         Console.WriteLine("Your hand:");
         playerHand.Print();
 
-        bool blackjack = playerHand.GetValue() == 21;
-        bool bust = playerHand.GetValue() > 21;
+        bool blackjack = IsBlackjack(playerHand);
+        bool bust = IsBust(playerHand);
         bool stand = false;
 
         while (!blackjack && !bust && !stand)
@@ -48,8 +48,8 @@ class Blackjack : IGame
                 playerHand.AddCard(deck.PickCard());
                 playerHand.Print();
 
-                blackjack = playerHand.GetValue() == 21;
-                bust = playerHand.GetValue() > 21;
+                blackjack = IsBlackjack(playerHand);
+                bust = IsBust(playerHand);
             }
             else if (input == "n")
             {
@@ -82,7 +82,7 @@ class Blackjack : IGame
         Console.WriteLine("Dealer's hand:");
         dealerHand.Print();
 
-        if (dealerHand.GetValue() > 21)
+        if (IsBust(dealerHand))
         {
             Console.WriteLine("Dealer busts!");
             balance += bet * 2;
@@ -147,5 +147,15 @@ class Blackjack : IGame
         PrintBalance();
 
         return bet;
+    }
+
+    private static bool IsBlackjack(Hand hand)
+    {
+        return hand.GetValue() == 21;
+    }
+
+    private static bool IsBust(Hand hand)
+    {
+        return hand.GetValue() > 21;
     }
 }
