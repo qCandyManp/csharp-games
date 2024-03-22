@@ -51,7 +51,7 @@ class Blackjack : IGame
     private void MakeBet()
     {
         Console.WriteLine("Enter your bet:");
-        string input = Console.ReadLine();
+        string? input = Console.ReadLine();
 
         if (!int.TryParse(input, out int bet))
         {
