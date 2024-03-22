@@ -29,6 +29,7 @@
         switch (gameName)
         {
             case "Blackjack":
+                Console.Clear();
                 Blackjack blackjack = new Blackjack();
                 blackjack.Start();
                 break;

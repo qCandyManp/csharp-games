@@ -13,10 +13,12 @@ class Blackjack : IGame
 
     public void StartRound()
     {
+        Console.Clear();
         Console.WriteLine("Starting Round...");
 
         // Make initial bet
         int bet = MakeBet();
+        Console.Clear();
 
         CardDeck deck = new CardDeck();
 
@@ -27,12 +29,7 @@ class Blackjack : IGame
         playerHand.AddCard(deck.PickCard());
         dealerHand.AddCard(deck.PickCard());
 
-        // Print hands
-        Console.WriteLine("Dealer's hand:");
-        dealerHand.Print();
-
-        Console.WriteLine("Your hand:");
-        playerHand.Print();
+        PrintHands(playerHand, dealerHand);
 
         bool blackjack = IsBlackjack(playerHand);
         bool bust = IsBust(playerHand);
@@ -46,7 +43,9 @@ class Blackjack : IGame
             if (input == "y")
             {
                 playerHand.AddCard(deck.PickCard());
-                playerHand.Print();
+
+                Console.Clear();
+                PrintHands(playerHand, dealerHand);
 
                 blackjack = IsBlackjack(playerHand);
                 bust = IsBust(playerHand);
@@ -62,10 +61,11 @@ class Blackjack : IGame
             }
         }
 
+        Console.Clear();
+
         if (blackjack)
         {
             Console.WriteLine("Blackjack!");
-            End();
         }
 
         if (bust)
@@ -79,12 +79,12 @@ class Blackjack : IGame
             dealerHand.AddCard(deck.PickCard());
         }
 
-        Console.WriteLine("Dealer's hand:");
-        dealerHand.Print();
+        PrintHands(playerHand, dealerHand);
 
         if (IsBust(dealerHand))
         {
             Console.WriteLine("Dealer busts!");
+            Console.WriteLine("You win!");
             balance += bet * 2;
         }
         else if (dealerHand.GetValue() > playerHand.GetValue())
@@ -110,7 +110,17 @@ class Blackjack : IGame
         else
         {
             Console.WriteLine("Round over.");
-            StartRound();
+            Console.WriteLine("Next Round? (y/n)");
+            string? input = Console.ReadLine();
+
+            if (input == "y")
+            {
+                StartRound();
+            }
+            else
+            {
+                End();
+            }
         }
     }
 
@@ -126,6 +136,7 @@ class Blackjack : IGame
 
     private int MakeBet()
     {
+        PrintBalance();
         Console.WriteLine("Enter your bet:");
         string? input = Console.ReadLine();
 
@@ -157,5 +168,17 @@ class Blackjack : IGame
     private static bool IsBust(Hand hand)
     {
         return hand.GetValue() > 21;
+    }
+
+    private static void PrintHands(Hand playerHand, Hand dealerHand)
+    {
+        Console.WriteLine("Dealer's hand:");
+        dealerHand.Print();
+
+        Console.WriteLine("-----------------");
+
+        Console.WriteLine("Your hand:");
+        playerHand.Print();
+
     }
 }
