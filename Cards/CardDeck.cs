@@ -1,18 +1,18 @@
 class CardDeck : ICardDeck
 {
-    public Card[] Cards { get; set; }
+    public List<Card> Cards { get; set; }
     public CardDeck()
     {
-        Cards = new Card[] { };
+        Cards = new List<Card>();
 
         int index = 0;
         int colorIndex = 0;
-        int nameIndex = 0;
         foreach (string color in CardColor.colors)
         {
+            int nameIndex = 0;
             foreach (string name in Card.names)
             {
-                Cards[index] = new Card(colorIndex, nameIndex);
+                Cards.Add(new Card(colorIndex, nameIndex));
                 index++;
                 nameIndex++;
             }
@@ -22,16 +22,16 @@ class CardDeck : ICardDeck
 
     public Card PickCard()
     {
-        if (Cards.Length == 0)
+        if (Cards.Count == 0)
         {
             throw new InvalidOperationException("No cards left in the deck");
         }
 
-        int rand = new Random().Next(0, Cards.Length - 1);
+        int rand = new Random().Next(0, Cards.Count - 1);
 
         Card card = Cards[rand];
         // remove card from deck
-        Cards = Cards.Where((source, index) => index != rand).ToArray();
+        Cards.RemoveAt(rand);
 
         return card;
     }
