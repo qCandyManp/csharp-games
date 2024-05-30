@@ -5,9 +5,9 @@
         Console.WriteLine("Welcome to my little console game collection!");
         Console.WriteLine("---------------------------------------------");
 
-        string[] gameList = new string[] {
+        string[] gameList = [
             "Blackjack",
-        };
+        ];
 
         Console.WriteLine("Here are the games you can play:");
         for (int i = 0; i < gameList.Length; i++)
