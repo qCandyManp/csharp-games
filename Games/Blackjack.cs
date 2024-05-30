@@ -23,8 +23,8 @@ class Blackjack : IGame
         CardDeck deck = new();
 
         // Deal cards
-        Hand playerHand = new(deck.PickCard());
-        Hand dealerHand = new(deck.PickCard());
+        BlackjackHand playerHand = new(deck.PickCard());
+        BlackjackHand dealerHand = new(deck.PickCard());
 
         playerHand.AddCard(deck.PickCard());
         dealerHand.AddCard(deck.PickCard());
