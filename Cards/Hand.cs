@@ -1,11 +1,6 @@
-class Hand : IHand
+class Hand(Card card) : IHand
 {
-    public List<Card> Cards { get; set; }
-
-    public Hand(Card card)
-    {
-        Cards = new List<Card> { card };
-    }
+    public List<Card> Cards { get; set; } = [card];
 
     public void AddCard(Card card)
     {

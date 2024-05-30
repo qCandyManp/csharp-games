@@ -1,18 +1,12 @@
-class Card : ICard
+class Card(int colorIndex, int nameIndex) : ICard
 {
     public static readonly string[] names = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
 
-    public CardColor Color { get; set; }
-    public int Index { get; set; }
+    public CardColor Color { get; set; } = new CardColor(colorIndex);
+    public int Index { get; set; } = nameIndex;
     public string Name()
     {
         return names[Index];
-    }
-
-    public Card(int colorIndex, int nameIndex)
-    {
-        Color = new CardColor(colorIndex);
-        Index = nameIndex;
     }
 
     public string FullName()
