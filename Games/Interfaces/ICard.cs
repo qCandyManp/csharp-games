@@ -1,4 +1,4 @@
-interface ICard
+public interface ICard
 {
     CardColor Color { get; set; }
     int Index { get; set; }

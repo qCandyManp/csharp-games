@@ -1,4 +1,4 @@
-class BlackjackHand(params Card[] cards) : Hand(cards)
+public class BlackjackHand(params Card[] cards) : Hand(cards)
 {
     public new int GetValue()
     {

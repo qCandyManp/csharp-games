@@ -1,4 +1,4 @@
-class Card(int colorIndex, int nameIndex) : ICard
+public class Card(int colorIndex, int nameIndex) : ICard
 {
     public static readonly string[] names = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
 

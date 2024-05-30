@@ -1,6 +1,6 @@
-class Hand(params Card[] cards) : IHand
+public class Hand(params Card[] cards) : IHand
 {
-    public List<Card> Cards { get; set; } = [.. cards];
+    public List<Card> Cards { get; set; } = new List<Card>(cards);
 
     public void AddCard(Card card)
     {

@@ -1,4 +1,4 @@
-class CardDeck : ICardDeck
+public class CardDeck : ICardDeck
 {
     public List<Card> Cards { get; set; }
     public CardDeck()

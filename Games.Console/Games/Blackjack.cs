@@ -1,4 +1,4 @@
-class Blackjack : IGame
+public class Blackjack : IGame
 {
     int balance = 100;
 

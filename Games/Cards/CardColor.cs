@@ -1,4 +1,4 @@
-class CardColor
+public class CardColor
 {
     public static readonly string[] names = { "Hearts", "Diamonds", "Clubs", "Spades" };
     public static readonly string[] icons = { "♥", "♦", "♣", "♠" };

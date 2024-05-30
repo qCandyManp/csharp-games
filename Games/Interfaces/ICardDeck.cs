@@ -1,4 +1,4 @@
-interface ICardDeck
+public interface ICardDeck
 {
     List<Card> Cards { get; set; }
 

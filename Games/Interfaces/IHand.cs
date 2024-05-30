@@ -1,4 +1,4 @@
-interface IHand
+public interface IHand
 {
     List<Card> Cards { get; set; }
     void AddCard(Card card);
