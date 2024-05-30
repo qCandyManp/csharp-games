@@ -83,4 +83,17 @@ public class GamesBlackjack_CardValues
         Assert.Equal(18, actual);
     }
 
+    [Fact]
+    public void IsCardValueCorrect_InputIs4And2And2AndKing_Return18()
+    {
+        // Arrange
+        BlackjackHand hand = new(new(0, 3), new(0, 1), new(1, 1), new(0, 12));
+
+        // Act
+        int actual = hand.GetValue();
+
+        // Assert
+        Assert.Equal(18, actual);
+    }
+
 }
