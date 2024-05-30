@@ -32,8 +32,24 @@ class Blackjack : IGame
         PrintHands(playerHand, dealerHand);
 
         bool blackjack = IsBlackjack(playerHand);
+        bool dealerBlackjack = IsBlackjack(dealerHand);
         bool bust = IsBust(playerHand);
         bool stand = false;
+
+        if (dealerBlackjack)
+        {
+            Console.WriteLine("Dealer has Blackjack!");
+            Console.WriteLine("Dealer wins!");
+            if (blackjack)
+            {
+                Console.WriteLine("You also got a Blackjack!");
+                Console.WriteLine("It's a tie!");
+                balance += bet;
+            }
+
+            PromtNextRound();
+            return;
+        }
 
         while (!blackjack && !bust && !stand)
         {
@@ -87,11 +103,26 @@ class Blackjack : IGame
             Console.WriteLine("You win!");
             balance += bet * 2;
         }
+        else if (bust)
+        {
+            Console.WriteLine("You bust!");
+            Console.WriteLine("Dealer wins!");
+        }
+        else if (blackjack && !dealerBlackjack)
+        {
+            Console.WriteLine("You win!");
+            balance += bet * 2;
+        }
+        else if (blackjack && dealerBlackjack)
+        {
+            Console.WriteLine("It's a tie!");
+            balance += bet;
+        }
         else if (dealerHand.GetValue() > playerHand.GetValue())
         {
             Console.WriteLine("Dealer wins!");
         }
-        else if (dealerHand.GetValue() < playerHand.GetValue())
+        else if (dealerHand.GetValue() < playerHand.GetValue() && !bust)
         {
             Console.WriteLine("You win!");
             balance += bet * 2;
@@ -109,19 +140,9 @@ class Blackjack : IGame
         }
         else
         {
-            Console.WriteLine("Round over.");
-            Console.WriteLine("Next Round? (y/n)");
-            string? input = Console.ReadLine();
-
-            if (input == "y")
-            {
-                StartRound();
-            }
-            else
-            {
-                End();
-            }
+            PromtNextRound();
         }
+        return;
     }
 
     public void End()
@@ -168,6 +189,22 @@ class Blackjack : IGame
     private static bool IsBust(Hand hand)
     {
         return hand.GetValue() > 21;
+    }
+
+    private void PromtNextRound()
+    {
+        Console.WriteLine("Round over.");
+        Console.WriteLine("Next Round? (y/n)");
+        string? input = Console.ReadLine();
+
+        if (input == "y")
+        {
+            StartRound();
+        }
+        else
+        {
+            End();
+        }
     }
 
     private static void PrintHands(Hand playerHand, Hand dealerHand)
