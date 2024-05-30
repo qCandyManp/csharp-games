@@ -1,6 +1,6 @@
 class Card(int colorIndex, int nameIndex) : ICard
 {
-    public static readonly string[] names = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+    public static readonly string[] names = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
 
     public CardColor Color { get; set; } = new CardColor(colorIndex);
     public int Index { get; set; } = nameIndex;
