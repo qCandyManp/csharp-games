@@ -30,7 +30,7 @@
         {
             case "Blackjack":
                 Console.Clear();
-                Blackjack blackjack = new Blackjack();
+                Blackjack blackjack = new();
                 blackjack.Start();
                 break;
             default:

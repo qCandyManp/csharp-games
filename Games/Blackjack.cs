@@ -20,11 +20,11 @@ class Blackjack : IGame
         int bet = MakeBet();
         Console.Clear();
 
-        CardDeck deck = new CardDeck();
+        CardDeck deck = new();
 
         // Deal cards
-        Hand playerHand = new Hand(deck.PickCard());
-        Hand dealerHand = new Hand(deck.PickCard());
+        Hand playerHand = new(deck.PickCard());
+        Hand dealerHand = new(deck.PickCard());
 
         playerHand.AddCard(deck.PickCard());
         dealerHand.AddCard(deck.PickCard());
